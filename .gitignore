@@ -3,5 +3,7 @@ cmake-build-release/
 .DS_Store
 .idea/
 build/
+bld/
 node_modules/
 *.dSYM
+.vscode/

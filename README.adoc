@@ -1,0 +1,37 @@
+= clay
+
+https://github.com/nicbarker/clay
+
+== Build & Test
+
+It is recommended to use the following tools:
+
+* https://releases.llvm.org/download.html[clang]
+* https://cmake.org/download/[CMake]
+* https://ninja-build.org/[Ninja]
+* https://git-scm.com/downloads[Git]
+
+=== Build
+
+----
+$ cmake -S mk/cmake -B bld -G "Ninja Multi-Config" -DCMAKE_C_COMPILER=clang
+$ cd bld
+$ ninja  # like: -f build-Debug.ninja
+$ ninja -f build-Debug.ninja
+$ ninja -f build-Release.ninja  
+----
+
+=== Test
+
+----
+$ bld
+$ ctest -C Debug                  # run all debug tests
+$ ctest -C Release                # run all release tests
+$ ctest -C Debug -R ebml          # run debug tests with "ebml" in the name
+----
+
+=== Generate HTML docs
+
+----
+$ lua mk/htmldoc/generate.lua
+----
