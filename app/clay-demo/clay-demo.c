@@ -1,4 +1,3 @@
-#include "clingo/clingo.h"
 #include "clay/clay.h"
 #include "../../renderers/raylib/clay_renderer_raylib.c"
 
@@ -26,7 +25,7 @@ void HandleClayErrors(Clay_ErrorData errorData) {
 
 
 int main(void) {
-    Clay_Raylib_Initialize(1024, 768, "demo", FLAG_WINDOW_RESIZABLE | FLAG_WINDOW_HIGHDPI | FLAG_MSAA_4X_HINT | FLAG_VSYNC_HINT); // Extra parameters to this function are new since the video was published
+    Clay_Raylib_Initialize(1024, 768, "clay-demo", FLAG_WINDOW_RESIZABLE | FLAG_WINDOW_HIGHDPI | FLAG_MSAA_4X_HINT | FLAG_VSYNC_HINT); // Extra parameters to this function are new since the video was published
 
     uint64_t clayRequiredMemory = Clay_MinMemorySize();
     Clay_Arena clayMemory = Clay_CreateArenaWithCapacityAndMemory(clayRequiredMemory, malloc(clayRequiredMemory));

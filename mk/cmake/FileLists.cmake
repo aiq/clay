@@ -23,5 +23,5 @@ set( TEST_FILES
 # APP_FILES
 ################################################################################
 set( APP_FILES
-   ${APP_DIR}/demo/demo.c
+   ${APP_DIR}/clay-demo/clay-demo.c
 )

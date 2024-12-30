@@ -31,15 +31,6 @@ include( ${CMAKE_CURRENT_SOURCE_DIR}/FileLists.cmake )
 # fetch
 ################################################################################
 
-fetchcontent_declare(
-    clingo
-    GIT_REPOSITORY "https://github.com/aiq/clingo"
-    GIT_TAG "main"
-    SOURCE_SUBDIR "mk/cmake"
-)
-
-fetchcontent_makeavailable( clingo )
-
 FetchContent_Declare(
     raylib
     GIT_REPOSITORY "https://github.com/raysan5/raylib.git"
@@ -57,23 +48,23 @@ add_library( ${LIB_NAME} SHARED ${SRC_FILES} )
 set_default_clay_flags( ${LIB_NAME} )
 target_include_directories( ${LIB_NAME} PUBLIC ${INC_DIR} PRIVATE ${SRC_DIR} )
 if( WIN32 )
-    target_link_libraries( ${LIB_NAME} clingo )
+    target_link_libraries( ${LIB_NAME} )
 else()
-    target_link_libraries( ${LIB_NAME} PUBLIC m clingo )
+    target_link_libraries( ${LIB_NAME} PUBLIC m )
 endif()
 
 set( TEST_INC_DIRS ${INC_DIR} ${SRC_DIR} )
 if( WIN32 )
-    set( TEST_LINK_LIBS ${LIB_NAME} clingo )
+    set( TEST_LINK_LIBS ${LIB_NAME} )
 else()
-    set( TEST_LINK_LIBS ${LIB_NAME} m clingo )
+    set( TEST_LINK_LIBS ${LIB_NAME} m )
 endif()
 add_tests( "${PROJECT_NAME}" "${TEST_FILES}" "${TEST_INC_DIRS}" "${TEST_LINK_LIBS}" )
 
 set( APP_INC_DIRS ${INC_DIR} ${SRC_DIR} ${APP_DIR} )
 if( WIN32 )
-   set( APP_LINK_LIBS ${LIB_NAME} clingo raylib )
+   set( APP_LINK_LIBS ${LIB_NAME} raylib )
 else()
-   set( APP_LINK_LIBS ${LIB_NAME} m clingo raylib )
+   set( APP_LINK_LIBS ${LIB_NAME} m raylib )
 endif()
 add_apps( "${APP_FILES}" "${APP_INC_DIRS}" "${APP_LINK_LIBS}" )
